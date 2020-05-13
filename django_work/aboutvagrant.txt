@@ -1,0 +1,94 @@
+
+How To Install Vagrant On Ubuntu 18.04
+Posted April 11, 2019  LINUX UBUNTU VAGRANT
+HomeSysAdminHow to Install Vagrant on Ubuntu 18.04
+Introduction
+Vagrant is a software application that creates an operating system environment using virtualization technology.
+
+Vagrant uses a command line interface to load, prepare, and launch a virtual environment, called a Vagrant Box. There are many pre-configured Vagrant boxes available for download. You can also start with a basic box and add your own configuration.
+
+This guide will walk you through how to install Vagrant on Ubuntu 18.04 (Bionic Beaver).
+
+installation steps for Vagrant on Ubuntu linux
+Prerequisites
+Access to a user account with sudo privileges
+A terminal window / command line (Ctrl-Alt-T)
+Steps to Install Vagrant on Ubuntu
+Install VirtualBox
+VirtualBox is a software utility that allows you to run an operating system inside an operating system. It does this by creating a virtual environment. Since Vagrant creates virtual operating systems, it needs a tool like VirtualBox to manage the virtual operating systems.
+
+In a terminal window, type in the following command to install VirtualBox:
+
+sudo apt install virtualbox
+The system should download and install VirtualBox software.
+
+Note: There are other virtualization applications available. If you prefer, you could use KVM, VMware, or any other hypervisor software.
+
+Installing Vagrant
+Next, choose one of two ways to install Vagrant.
+
+You can run the apt-get install command in Ubuntu Linux or download the binary package from Vagrants website.
+
+Option 1: Install Vagrant with apt-get 
+To Install Vagrant with the apt-get install command use the following:
+
+sudo apt install vagrant
+The system should download and install the software.
+
+Option 2: Install Vagrant With the Binary Package 
+Sometimes, the version of the software in the official repositories is not as recent as on the developer’s website.
+
+To make sure you are running the latest version of Vagrant, open a web browser and browse to https://www.vagrantup.com/downloads.html. Since Ubuntu is a Debian-based operating system, choose either the 32-bit or 64-bit link under the Debian heading.
+
+Alternately, if you know the version of Vagrant you want to download, enter the following in a terminal window:
+
+sudo wget https://releases.hashicorp.com/vagrant/2.2.2/vagrant_2.2.2_x86_64.deb
+Then you can install the package using the following command:
+
+sudo dpkg –i vagrant_2.2.2_x86_64.deb
+Note: This version 2.2.2 is current as of the writing of this article. You can find the latest version by checking the developer’s download page.
+
+Verify Vagrant Installation
+To verify the installation, use the following command:
+
+vagrant ––version
+The system should display the current version of Vagrant installed on your Ubuntu system.
+
+Deploying Vagrant On Ubuntu 18.04
+Now that you have installed Vagrant, let’s create a development environment.
+
+1. Create a new directory to store the virtual operating system you are going to create:
+
+sudo mkdir ~/vagrant-ubuntu
+cd ~/vagrant-ubuntu
+2. Download and install your operating system (Vagrant Box) of choice. For example, this command will install the Trusty Tahr 64-bit system:
+
+sudo vagrant init ubuntu/trusty64
+Using the init command loads the virtual operating system. It also creates a default basic configuration file. This is called the Vagrantfile, and it is located in the same directory you just created. This file can be edited and copied to other systems.
+
+3. Next, create and configure the virtual machine according to the Vagrantfile with:
+
+vagrant up
+The system should show the default SSH address, username, and authentication method for the new virtual machine.
+
+4. To connect to the virtual machine by SSH, enter the following:
+
+vagrant ssh
+You can now work in the new virtual environment.
+
+Other Vagrant Commands
+To stop the virtual machine use:
+
+vagrant halt
+To delete the virtual machine, use the command:
+
+vagrant destroy
+This will also destroy any work you have done inside the virtual OS.
+
+To manually create a Vagrantfile type in the following command:
+
+touch vagrantfile
+This will create a blank Vagrantfile as a placeholder. The vagrant up command should then launch a default virtual environment. A text editor can also be used to edit the Vagrantfile.
+
+Conclusion
+Now, you know how to install and configure Vagrant on your Ubuntu system. You should have a functioning Ubuntu virtual machine managed through Vagrant.
